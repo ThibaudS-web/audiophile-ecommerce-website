@@ -1,9 +1,10 @@
-import ButtonFactory from "@/components/button/buttonFactory";
+import Image from 'next/image'
 
 export default function Home() {
   return (
     <>
       <div>Home!</div>
+      <Image src='#' alt="#" />
     </>
   )
 }

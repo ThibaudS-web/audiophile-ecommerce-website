@@ -11,14 +11,8 @@ export const GlobalStyle = createGlobalStyle`
         --brown: #D87D4A;
         --brown-hover: #FBAF85;
         --black-header: #141414;
-
-        --primary-bg-button: #D87D4A;
-        --primary-fg-button: #FFFFFF;
-        --secondary-bg-button: #FFFFFF;
-        --secondary-fg-button: #000000;
         --grey: #F1F1f1;
         --grey-light: #FAFAFA;
-        --primary-brown-hover: #fbaf85;
         --header-bg-color: #141414;
     }
 

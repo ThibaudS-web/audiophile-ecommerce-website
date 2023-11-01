@@ -1,3 +1,5 @@
+"use client"
+
 import { SVGProps } from "react"
 
 const Logo = (props: SVGProps<SVGSVGElement>) => (

@@ -1,10 +1,12 @@
 "use client"
 import React from 'react'
-import { Container, HeaderWrapper, Nav, StyledLink } from './headerStyle'
+import { Container, HeaderWrapper, MenuAndLogoWrapper, Nav, StyledLink } from './headerStyle'
 import CartSVG from '../svg/cart/CartSVG'
 import { CartSVGWrapper } from '../svg/cart/cartStyle'
 import Logo from '../svg/logo/Logo'
 import { usePathname } from 'next/navigation'
+import useWidthScreen from '@/hooks/useWidthScreen'
+import HamburgerSVG from '../svg/menu-hamburger/HamburgerSVG'
 
 const Header = () => {
   const pathname = usePathname()
@@ -13,17 +15,24 @@ const Header = () => {
     console.log('Clicked!')
   }
 
+  const activeClassManagement = (href: string) => {
+    pathname === href ? 'active' : ''
+  }
+
   return (
     <HeaderWrapper>
       <Container>
-        <StyledLink href="/">
-          <Logo />
-        </StyledLink>
+        <MenuAndLogoWrapper>
+          <HamburgerSVG />
+          <StyledLink href="/">
+            <Logo />
+          </StyledLink>
+        </MenuAndLogoWrapper>
         <Nav>
-          <StyledLink className={`${pathname === '/' ? 'active' : ''}`} href="/">HOME</StyledLink>
-          <StyledLink className={`${pathname === '/headphones' ? 'active' : ''}`} href="/headphones">HEADPHONES</StyledLink>
-          <StyledLink className={`${pathname === '/speakers' ? 'active' : ''}`} href="/speakers">SPEAKERS</StyledLink>
-          <StyledLink className={`${pathname === '/earphones' ? 'active' : ''}`} href="/earphones">EARPHONES</StyledLink>
+          <StyledLink className={`${activeClassManagement("/")}`} href="/">HOME</StyledLink>
+          <StyledLink className={`${activeClassManagement("/headphones")}`} href="/headphones">HEADPHONES</StyledLink>
+          <StyledLink className={`${activeClassManagement("/speakers")}`} href="/speakers">SPEAKERS</StyledLink>
+          <StyledLink className={`${activeClassManagement("/earphones")}`} href="/earphones">EARPHONES</StyledLink>
         </Nav>
         <CartSVGWrapper onClick={handleClickCart}>
           <CartSVG />

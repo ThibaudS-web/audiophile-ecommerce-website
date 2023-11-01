@@ -14,6 +14,10 @@ export const GlobalStyle = createGlobalStyle`
         --grey: #F1F1f1;
         --grey-light: #FAFAFA;
         --header-bg-color: #141414;
+
+        --bloc-desktop: 1100px;
+        --bloc-tablet: 690px;
+        --bloc-mobile: 330px;
     }
 
     body {

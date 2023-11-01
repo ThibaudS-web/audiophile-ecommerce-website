@@ -8,8 +8,6 @@ export interface ButtonOutlineProps extends ButtonBaseProps {
     color: "primary" | "secondary"
 }
 
-
-
 export interface ButtonFactoryProps {
     handleClick?: () => void
     children: React.ReactNode

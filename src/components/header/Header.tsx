@@ -5,18 +5,18 @@ import CartSVG from '../svg/cart/CartSVG'
 import { CartSVGWrapper } from '../svg/cart/cartStyle'
 import Logo from '../svg/logo/Logo'
 import { usePathname } from 'next/navigation'
-import useWidthScreen from '@/hooks/useWidthScreen'
 import HamburgerSVG from '../svg/menu-hamburger/HamburgerSVG'
 
 const Header = () => {
   const pathname = usePathname()
 
   const handleClickCart = () => {
+    //TODO: Need to be implemented
     console.log('Clicked!')
   }
 
   const activeClassManagement = (href: string) => {
-    pathname === href ? 'active' : ''
+    return pathname === href ? 'active' : ''
   }
 
   return (

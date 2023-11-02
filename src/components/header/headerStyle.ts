@@ -20,6 +20,7 @@ export const Container = styled.div`
     margin: auto;
 
     @media screen and (${Device.tablet}) {
+        width: 90%;
         max-width: var(--bloc-tablet)
     }
 `

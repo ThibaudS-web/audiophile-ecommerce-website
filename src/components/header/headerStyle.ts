@@ -6,6 +6,8 @@ import { Device } from '@/breakpoints'
 export const HeaderWrapper = styled.header`
     width: 100%;
     background-color: var(--black-header);
+    position: sticky;
+    z-index:99;
 `
 
 export const Container = styled.div`

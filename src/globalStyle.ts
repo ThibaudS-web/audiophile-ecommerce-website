@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components"
+import { Device } from "./breakpoints"
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -10,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     :root {
         --brown: #D87D4A;
         --brown-hover: #FBAF85;
-        --black-header: #141414;
+        --black-header: #191919;
         --grey: #F1F1f1;
         --grey-light: #FAFAFA;
         --header-bg-color: #141414;
@@ -24,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 0.9375rem;
         line-height: 1.5625rem;
         font-weight: 500;
+        background-color: var(--grey-light)
     }
 
     h1, h2, h3, h4, h5, h6 {

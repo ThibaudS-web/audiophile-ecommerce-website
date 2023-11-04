@@ -1,11 +1,11 @@
 export interface ButtonBaseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     handleClick?: () => void
     children: React.ReactNode
-
 }
 
 export interface ButtonOutlineProps extends ButtonBaseProps {
     color: "primary" | "secondary"
+    $isReverseColor?: boolean
 }
 
 export interface ButtonFactoryProps {
@@ -13,4 +13,5 @@ export interface ButtonFactoryProps {
     children: React.ReactNode
     color?: "primary" | "secondary"
     btnType: 'outline' | 'shop'
+    $isReverseColor?: boolean
 }

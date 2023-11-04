@@ -5,14 +5,18 @@ import Image from "next/image"
 import HeadphoneDesktop from "/public/assets/home/desktop/image-hero.jpg"
 import HeadphoneTablet from "/public/assets/home/tablet/image-header.jpg"
 import HeadphoneMobile from "/public/assets/home/mobile/image-header.jpg"
+import Circle from "/public/assets/home/desktop/pattern-circles.svg"
+import SpeakerDesktop from "/public/assets/home/desktop/image-speaker-zx9.png"
+import SpeakerLaptop from "/public/assets/home/tablet/image-speaker-zx9.png"
 
-export const NewProductWrapper = styled.div`
+
+export const NewProductWrapper = styled.section`
     width: 100%;
     background-color: var(--black-header);
     margin-bottom: 2rem;
 `
 
-export const SectionWrapper = styled.div`
+export const NewProductSectionWrapper = styled.div`
     display: flex;
     width: 85%;
     margin: 0 auto 10rem auto;
@@ -20,6 +24,19 @@ export const SectionWrapper = styled.div`
     align-items: center;
     overflow: hidden;
    
+    @media screen and (${Device.tablet}) {
+        width: 90%;
+        max-width: var(--bloc-tablet);
+    }
+`
+export const OverviewProductsSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    max-width: var(--bloc-desktop);
+    margin: auto;
+    gap: 3rem;
+
     @media screen and (${Device.tablet}) {
         width: 90%;
         max-width: var(--bloc-tablet);
@@ -91,7 +108,7 @@ export const Banniere = styled.div`
 
     &::after {
         content:'';
-        background: 50% center / 130% no-repeat url(${HeadphoneDesktop.src});
+        background: 50% center / 100% no-repeat url(${HeadphoneDesktop.src});
         width: 100%;
         height: 105%;
         position: absolute;
@@ -105,6 +122,110 @@ export const Banniere = styled.div`
         @media screen and (${Device.mobileL}) {
             background: center / contain no-repeat url(${HeadphoneMobile.src});
         }
+    }   
+`
+
+export const PrimaryProduct = styled.article`
+    width: 100%;
+    height: 560px;
+    background-color: var(--brown);
+    border-radius: 0.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    @media screen and (${Device.laptop}) {
+        flex-direction: column;
+        height: 720px;
     }
+
+    @media screen and (${Device.mobileL}) {
+        flex-direction: column;
+        height: 600px;
+    }
+
+    &::after {
+        content:'';
+        position: absolute;
+        background: -10rem -2rem no-repeat url(${Circle.src});
+        width: 100%;
+        height: 100%;
+
+        @media screen and (${Device.laptop}) {
+            width: 100%;
+            background: no-repeat url(${Circle.src});
+            background-position-x: 50%;
+            background-position-y: 137%; 
+        }
+
+        @media screen and (${Device.tablet}) {
+            background-size: 55rem;
+            background-position-y: 168%; 
+        }
+
+        @media screen and (${Device.mobileL}) {
+            background-size: 32rem;
+            background-position-y: -120%;
+        }
+    }
+`
+
+export const PrimaryImageContainer = styled.div`
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    z-index: 10;
+    background: 75% 110% no-repeat url(${SpeakerDesktop.src});
+    background-size: 23rem; 
+
+    @media screen and (${Device.laptop}) {
+        background: center / 30% no-repeat url(${SpeakerLaptop.src});
+    }
+
+    @media screen and (${Device.mobileL}) {
+        background: center 3.5rem / 9rem no-repeat url(${SpeakerLaptop.src});
+    }
+`
+
+
+export const DescriptionPrimaryProduct = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: white;
+    z-index: 3;
+    width: 85%;
+    height: 100%;
+    justify-content: center;
+    padding: 0 6rem;
+
+    & > p {
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    @media screen and (${Device.laptop}) {
+        width: 60%;
+        padding: 2rem;
+        text-align: center;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    @media screen and (${Device.mobileL}) {
+        width: 100%;
+        padding: 2rem 0.5rem;
+
+        & > h1 {
+            width: min-content;
+            line-height: 2.5rem;
+            font-size: 2.25rem;
+        }
+    }
+    
+`
+
+export const SecondaryProduct = styled.article`
     
 `

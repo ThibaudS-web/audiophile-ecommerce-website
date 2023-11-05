@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 export const SectionWrapper = styled.section`
     width: 85%;
-    margin: 8.75rem auto;
+    margin: 8.75rem auto 0 auto;
     max-width: var(--bloc-desktop);
 
     @media screen and (${Device.tablet}) {

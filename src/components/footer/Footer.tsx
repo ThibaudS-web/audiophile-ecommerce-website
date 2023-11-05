@@ -1,8 +1,11 @@
 import React from 'react'
+import { FooterBackground } from './footerStyle'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <FooterBackground>
+
+    </FooterBackground>
   )
 }
 

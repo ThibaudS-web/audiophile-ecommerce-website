@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from "styled-components"
-import { Device } from "./breakpoints"
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -16,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
         --grey-light: #FAFAFA;
         --header-bg-color: #141414;
 
-        --bloc-desktop: 1100px;
+        --bloc-desktop: 1110px;
         --bloc-tablet: 690px;
         --bloc-mobile: 330px;
     }

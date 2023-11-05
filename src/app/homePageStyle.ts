@@ -8,7 +8,10 @@ import HeadphoneMobile from "/public/assets/home/mobile/image-header.jpg"
 import Circle from "/public/assets/home/desktop/pattern-circles.svg"
 import SpeakerDesktop from "/public/assets/home/desktop/image-speaker-zx9.png"
 import SpeakerLaptop from "/public/assets/home/tablet/image-speaker-zx9.png"
-
+import SpeakerSecondaryDesktop from "/public/assets/home/desktop/image-speaker-zx7.jpg"
+import SpeakerSecondaryTablet from "/public/assets/home/tablet/image-speaker-zx7.jpg"
+import SpeakerSecondaryMobile from "/public/assets/home/mobile/image-speaker-zx7.jpg"
+import EarphoneDesktop from "/public/assets/home/desktop/image-earphones-yx1.jpg"
 
 export const NewProductWrapper = styled.section`
     width: 100%;
@@ -34,7 +37,7 @@ export const OverviewProductsSection = styled.section`
     flex-direction: column;
     width: 85%;
     max-width: var(--bloc-desktop);
-    margin: auto;
+    margin: 8.75rem auto;
     gap: 3rem;
 
     @media screen and (${Device.tablet}) {
@@ -178,7 +181,7 @@ export const PrimaryImageContainer = styled.div`
     justify-content: flex-end;
     z-index: 10;
     background: 75% 110% no-repeat url(${SpeakerDesktop.src});
-    background-size: 23rem; 
+    background-size: 24rem; 
 
     @media screen and (${Device.laptop}) {
         background: center / 30% no-repeat url(${SpeakerLaptop.src});
@@ -226,6 +229,139 @@ export const DescriptionPrimaryProduct = styled.div`
     
 `
 
-export const SecondaryProduct = styled.article`
+export const SpeakerProduct = styled.article`
+    width: 100%;
+    border-radius: 0.5rem;
+    background: center / cover no-repeat url(${SpeakerSecondaryDesktop.src});
+    display: flex;
+
+    @media screen and (${Device.tablet}) {
+        background: center / cover no-repeat url(${SpeakerSecondaryTablet.src});
+    }
+
+    @media screen and (${Device.mobileL}) {
+        background: center / cover no-repeat url(${SpeakerSecondaryMobile.src});
+    }
+`
+
+export const DescriptionSpeakerProduct = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 6rem;
+
+    @media screen and (${Device.tablet}) {
+        padding: 6rem 3.75rem;
+    }
+
+    @media screen and (${Device.mobileL}) {
+        padding: 6rem 1.5rem;
+    }
+`
+
+export const EarphoneProductWrapper = styled.article`
+    width: 100%;
+    height: 340px;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.875rem;
     
+    @media screen and (${Device.laptop}) {
+       gap: 0.625rem;
+    }
+    
+    @media screen and (${Device.tabletMin}) {
+        flex-direction: column;
+        height: auto;
+        gap: 1.5rem;  
+    }
+`
+
+export const EarphoneImage = styled.div`
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    background: center / cover no-repeat url(${EarphoneDesktop.src});
+
+    @media screen and (${Device.tabletMin}) {
+        height: 200px;
+    }
+
+    @media screen and (${Device.mobileL}) {
+        padding:0 1.5rem;
+    }
+`
+
+export const DescriptionEarphoneProduct = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    background-color: var(--grey);
+    border-radius: 0.5rem;
+
+    & > * {
+        margin-left: 6rem;
+
+        @media screen and (${Device.laptop}) {
+            margin-left: 2.5rem;
+        }
+    }
+
+    @media screen and (${Device.tabletMin}) {
+        height: 200px;
+    }
+`
+
+export const ProductSummary = styled.div`
+    width: 100%;
+    margin-top: 5.75rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.875rem;
+
+    @media screen and (${Device.laptop}) {
+        flex-direction: column-reverse;
+    }
+`
+
+export const ProductSummaryTextWrapper = styled.div`
+    display: flex;
+    width: 100%;
+    text-align: left;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+
+    & > * {
+        margin-right: 5.6rem;
+    }
+
+    @media screen and (${Device.laptop}) {
+        text-align: center;
+        padding: unset;
+    }  
+`
+
+export const Picture = styled.picture`
+    width: 100%;
+`
+
+export const BestGearImage = styled.img`
+    height: auto;
+    width: 100%;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    display: block;
+
+
+    @media screen and (${Device.laptop}) {
+        width: 100%;
+        height: 300px;
+    }
+`
+export const Strong = styled.strong`
+    color: var(--brown)
 `

@@ -28,9 +28,7 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s;
-    display: flex;
-    align-items: center;
-
+    
     &:hover, &.active {
         color: var(--brown);
     }

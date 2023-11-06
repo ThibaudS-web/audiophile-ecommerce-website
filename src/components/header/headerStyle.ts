@@ -27,26 +27,8 @@ export const Container = styled.div`
     }
 `
 
-export const Nav = styled.nav`
-    display: flex;
-    gap: 2.25rem;
-
-    @media screen and (${Device.tablet}) {
-        display: none;
-    }
-`
-
-export const StyledLink = styled(Link)`
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-
-    &:hover, &.active {
-        color: var(--brown);
-    }
+export const LogoLink = styled(Link)`
+    display: inherit;
 `
 
 export const MenuAndLogoWrapper = styled.div`

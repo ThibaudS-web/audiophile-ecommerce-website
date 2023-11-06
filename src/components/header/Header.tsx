@@ -3,6 +3,7 @@ import React from 'react'
 import {
   Container,
   HeaderWrapper,
+  LogoLink,
   MenuAndLogoWrapper
 } from './headerStyle'
 import CartSVG from '../svg/cart/CartSVG'
@@ -24,9 +25,9 @@ const Header = () => {
       <Container>
         <MenuAndLogoWrapper>
           <HamburgerSVG />
-          <Link href="/">
+          <LogoLink href="/">
             <Logo />
-          </Link>
+          </LogoLink>
         </MenuAndLogoWrapper>
         <Navigation type='header' />
         <CartSVGWrapper onClick={handleClickCart}>

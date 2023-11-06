@@ -337,6 +337,17 @@ export const ProductSummaryTextWrapper = styled.div`
 
     & > * {
         margin-right: 5.6rem;
+
+        @media screen and (${Device.laptop}) {
+            margin-right: unset;
+        }
+    }
+
+    & > h2 {
+        @media screen and (${Device.mobileL}) {
+            font-size: 1.75rem;
+            line-height: 2rem;
+        }  
     }
 
     @media screen and (${Device.laptop}) {

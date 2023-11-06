@@ -1,22 +1,22 @@
 "use client"
 import React from 'react'
-import { Container, HeaderWrapper, MenuAndLogoWrapper, Nav, StyledLink } from './headerStyle'
+import {
+  Container,
+  HeaderWrapper,
+  MenuAndLogoWrapper
+} from './headerStyle'
 import CartSVG from '../svg/cart/CartSVG'
 import { CartSVGWrapper } from '../svg/cart/cartStyle'
 import Logo from '../svg/logo/Logo'
-import { usePathname } from 'next/navigation'
 import HamburgerSVG from '../svg/menu-hamburger/HamburgerSVG'
+import Navigation from '../navigation/Navigation'
+import Link from 'next/link'
 
 const Header = () => {
-  const pathname = usePathname()
 
   const handleClickCart = () => {
     //TODO: Need to be implemented
     console.log('Clicked!')
-  }
-
-  const activeClassManagement = (href: string) => {
-    return pathname === href ? 'active' : ''
   }
 
   return (
@@ -24,16 +24,11 @@ const Header = () => {
       <Container>
         <MenuAndLogoWrapper>
           <HamburgerSVG />
-          <StyledLink href="/">
+          <Link href="/">
             <Logo />
-          </StyledLink>
+          </Link>
         </MenuAndLogoWrapper>
-        <Nav>
-          <StyledLink className={`${activeClassManagement("/")}`} href="/">HOME</StyledLink>
-          <StyledLink className={`${activeClassManagement("/headphones")}`} href="/headphones">HEADPHONES</StyledLink>
-          <StyledLink className={`${activeClassManagement("/speakers")}`} href="/speakers">SPEAKERS</StyledLink>
-          <StyledLink className={`${activeClassManagement("/earphones")}`} href="/earphones">EARPHONES</StyledLink>
-        </Nav>
+        <Navigation type='header' />
         <CartSVGWrapper onClick={handleClickCart}>
           <CartSVG />
         </CartSVGWrapper>

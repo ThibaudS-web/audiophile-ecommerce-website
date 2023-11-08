@@ -3,26 +3,31 @@ import { Device } from "@/breakpoints"
 import Image from "next/image"
 import styled from "styled-components"
 
-export const SectionWrapper = styled.section`
-    width: 85%;
-    margin: 8.75rem auto 0 auto;
-    max-width: var(--bloc-desktop);
+// export const SectionWrapper = styled.section`
+//     width: 85%;
+//     margin: 8.75rem auto 0 auto;
+//     max-width: var(--bloc-desktop);
 
-    @media screen and (${Device.tablet}) {
-        width: 90%;
-        max-width: var(--bloc-tablet);
-    }
-`
+//     @media screen and (${Device.tablet}) {
+//         width: 90%;
+//         max-width: var(--bloc-tablet);
+//     }
+// `
 
 export const CategoriesWrapper = styled.ul`
-    width: 100%;
+    width: 85%;
+    max-width: var(--bloc-desktop);
+   
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1.8rem;
+    margin: auto;
 
     @media screen and (${Device.tablet}) {
         gap: 0.6rem;
+        width: 90%;
+        max-width: var(--bloc-tablet);
     }
 
     @media screen and (${Device.mobileL}) {

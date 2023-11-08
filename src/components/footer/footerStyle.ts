@@ -10,6 +10,7 @@ const GlobalStyletext = css`
 export const FooterBackground = styled.footer`
     width: 100%;
     background-color: var(--header-bg-color);
+    margin-top: 8.75rem;
 `
 
 export const FooterWrapper = styled.div`

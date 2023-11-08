@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useRef } from 'react'
 import {
   Container,
   HeaderWrapper,
@@ -11,20 +11,24 @@ import { CartSVGWrapper } from '../svg/cart/cartStyle'
 import Logo from '../svg/logo/Logo'
 import HamburgerSVG from '../svg/menu-hamburger/HamburgerSVG'
 import Navigation from '../navigation/Navigation'
-import Link from 'next/link'
 
 const Header = () => {
 
   const handleClickCart = () => {
     //TODO: Need to be implemented
-    console.log('Clicked!')
+    console.log('Clicked on Cart!')
+  }
+
+  const handleClickHamburgerMenu = () => {
+    //TODO: Need to be implemented
+    console.log('Clicked on Hamburger!')
   }
 
   return (
     <HeaderWrapper>
       <Container>
         <MenuAndLogoWrapper>
-          <HamburgerSVG />
+          <HamburgerSVG handleClick={handleClickHamburgerMenu} />
           <LogoLink href="/">
             <Logo />
           </LogoLink>

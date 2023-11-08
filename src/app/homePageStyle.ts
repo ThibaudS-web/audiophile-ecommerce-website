@@ -16,13 +16,21 @@ import EarphoneDesktop from "/public/assets/home/desktop/image-earphones-yx1.jpg
 export const NewProductWrapper = styled.section`
     width: 100%;
     background-color: var(--black-header);
-    margin-bottom: 2rem;
+    margin-bottom: 13.75rem;
+
+    @media screen and (${Device.tablet}) {
+         margin-bottom: 9.375rem;
+    }
+
+    @media screen and (${Device.mobileL}) {
+         margin-bottom: 6.25rem;
+    }
 `
 
 export const NewProductSectionWrapper = styled.div`
     display: flex;
     width: 85%;
-    margin: 0 auto 10rem auto;
+    margin: auto;
     max-width: var(--bloc-desktop);
     align-items: center;
     overflow: hidden;
@@ -37,12 +45,17 @@ export const OverviewProductsSection = styled.section`
     flex-direction: column;
     width: 85%;
     max-width: var(--bloc-desktop);
-    margin: 8.75rem auto;
+    margin: 8.75rem  auto 12.5rem auto;
     gap: 3rem;
 
     @media screen and (${Device.tablet}) {
         width: 90%;
         max-width: var(--bloc-tablet);
+        margin: 7.5rem  auto 10.625rem auto;
+    }
+
+    @media screen and (${Device.mobileL}) {
+        margin: 5.625rem  auto 7.5rem auto;
     }
 `
 
@@ -68,7 +81,7 @@ export const DescriptionNewProduct = styled.div`
     }
 `
 
-export const Overline = styled.p`
+export const Overline = styled.span`
     font-size: 0.875rem;
     color: rgba(255, 255, 255, 0.5);
     letter-spacing: 0.625rem;
@@ -314,65 +327,3 @@ export const DescriptionEarphoneProduct = styled.div`
     }
 `
 
-export const ProductSummary = styled.div`
-    width: 100%;
-    margin-top: 5.75rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 1.875rem;
-
-    @media screen and (${Device.laptop}) {
-        flex-direction: column-reverse;
-    }
-`
-
-export const ProductSummaryTextWrapper = styled.div`
-    display: flex;
-    width: 100%;
-    text-align: left;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
-
-    & > * {
-        margin-right: 5.6rem;
-
-        @media screen and (${Device.laptop}) {
-            margin-right: unset;
-        }
-    }
-
-    & > h2 {
-        @media screen and (${Device.mobileL}) {
-            font-size: 1.75rem;
-            line-height: 2rem;
-        }  
-    }
-
-    @media screen and (${Device.laptop}) {
-        text-align: center;
-        padding: unset;
-    }  
-`
-
-export const Picture = styled.picture`
-    width: 100%;
-`
-
-export const BestGearImage = styled.img`
-    height: auto;
-    width: 100%;
-    border-radius: 0.5rem;
-    object-fit: cover;
-    display: block;
-
-
-    @media screen and (${Device.laptop}) {
-        width: 100%;
-        height: 300px;
-    }
-`
-export const Strong = styled.strong`
-    color: var(--brown)
-`

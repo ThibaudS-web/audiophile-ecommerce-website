@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   authors: { name: "Thibaud Saumureau", url: "https://portfolio-thibauds.vercel.app/" }
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode

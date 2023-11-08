@@ -16,20 +16,23 @@ import {
   DescriptionSpeakerProduct,
   EarphoneImage,
   EarphoneProductWrapper,
-  DescriptionEarphoneProduct,
-  ProductSummary,
-  BestGearImage,
-  Strong,
-  ProductSummaryTextWrapper,
-  Picture
+  DescriptionEarphoneProduct
 } from "./homePageStyle"
 import ButtonFactory from "@/components/button/ButtonFactory"
-import BestGearDesktop from "/public/assets/shared/desktop/image-best-gear.jpg"
-import BestGearTablet from "/public/assets/shared/tablet/image-best-gear.jpg"
-import BestGearMobile from "/public/assets/shared/mobile/image-best-gear.jpg"
-import { Device } from "@/breakpoints"
+import AudiophileSummary from "@/components/audiophile-summary/AudiophileSummary"
+import {
+  useRouter,
+  usePathname
+} from "next/navigation"
 
 export default function Home() {
+  const pathname = usePathname()
+  const { push } = useRouter()
+
+  const goToTheProductPage = (url: string) => {
+    push(url)
+  }
+
   return (
     <>
       <NewProductWrapper>
@@ -41,7 +44,13 @@ export default function Home() {
               <ProductOverview>
                 Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
               </ProductOverview>
-              <ButtonFactory btnType="outline" color="primary">SEE PRODUCT</ButtonFactory>
+              <ButtonFactory
+                handleClick={() => goToTheProductPage("/headphones/xx99-mark-two-headphones")}
+                btnType="outline"
+                color="primary"
+              >
+                SEE PRODUCT
+              </ButtonFactory>
             </DescriptionNewProduct>
           </Banniere>
         </NewProductSectionWrapper>
@@ -50,6 +59,7 @@ export default function Home() {
       <Categories />
 
       <OverviewProductsSection>
+
         <PrimaryProduct>
           <PrimaryImageContainer />
           <DescriptionPrimaryProduct>
@@ -58,6 +68,7 @@ export default function Home() {
               Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
             </p>
             <ButtonFactory
+              handleClick={() => goToTheProductPage("/speakers/zx9-speaker")}
               btnType="outline"
               color="secondary"
               $isReverseColor
@@ -71,6 +82,7 @@ export default function Home() {
           <DescriptionSpeakerProduct>
             <h4>ZX7 SPEAKER</h4>
             <ButtonFactory
+              handleClick={() => goToTheProductPage("/speakers/zx7-speaker")}
               btnType="outline"
               color="secondary"
             >
@@ -84,6 +96,7 @@ export default function Home() {
           <DescriptionEarphoneProduct>
             <h4>YX1 EARPHONES</h4>
             <ButtonFactory
+              handleClick={() => goToTheProductPage("/earphones/yx1-earphones")}
               btnType="outline"
               color="secondary"
             >
@@ -91,21 +104,10 @@ export default function Home() {
             </ButtonFactory>
           </DescriptionEarphoneProduct>
         </EarphoneProductWrapper>
-        
-        <ProductSummary>
-          <ProductSummaryTextWrapper>
-            <h2>Bringing you the <Strong>best</Strong> audio gear</h2>
-            <p>
-              Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.
-            </p>
-          </ProductSummaryTextWrapper>
-          <Picture>
-            <source srcSet={BestGearTablet.src} media={`(${Device.laptop})`} />
-            <source srcSet={BestGearMobile.src} media={`(${Device.mobileL})`} />
-            <BestGearImage src={BestGearDesktop.src} alt="Best gear" />
-          </Picture>
-        </ProductSummary>
+
       </OverviewProductsSection>
+
+      <AudiophileSummary />
     </>
   )
 }

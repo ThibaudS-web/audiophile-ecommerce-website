@@ -5,8 +5,9 @@ import CategoryHeader from "@/components/header-categorie/CategoryHeader"
 import Products from "@/components/wrapper-products/WrapperProducts"
 import getProducts from "@/services/useProducts"
 import { useQuery } from "@tanstack/react-query"
-import { notFound, usePathname, useRouter } from "next/navigation"
-import { WrapperBottom } from "./categoryStyle"
+import { notFound, usePathname } from "next/navigation"
+import PageContainer from "@/components/container/PageContainer"
+
 
 const page = ({ params }: { params: { category: string } }) => {
     const { category } = params
@@ -30,11 +31,12 @@ const page = ({ params }: { params: { category: string } }) => {
     return (
         <>
             <CategoryHeader category={category} />
-            {!isPending ? <Products products={products!} /> : null}
-            <WrapperBottom>
+
+            <PageContainer>
+                {!isPending ? <Products products={products!} /> : null}
                 <Categories />
                 <AudiophileSummary />
-            </WrapperBottom>
+            </PageContainer>
         </>
     )
 }

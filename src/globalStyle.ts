@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         padding: 0;
         margin: 0;
+        font-family: '__Manrope_e03fe5', '__Manrope_Fallback_e03fe5'
     }
 
     :root {
@@ -17,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 
         --bloc-desktop: 1110px;
         --bloc-tablet: 690px;
-        --bloc-mobile: 330px;
+        --bloc-mobile: 500px;
     }
 
     body {

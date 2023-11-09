@@ -14,17 +14,10 @@ export const FooterBackground = styled.footer`
 `
 
 export const FooterWrapper = styled.div`
-    width: 85%;
-    max-width: var(--bloc-desktop);
     display: flex;
     flex-direction: column;
     margin: auto;
     position: relative;
-
-    @media screen and (${Device.tablet}){
-        width: 90%;
-        max-width: var(--bloc-tablet);
-    }
 
     &::after{
         content: '';
@@ -60,13 +53,13 @@ export const FooterHeader = styled.div`
 `
 
 export const FooterMain = styled.div`
-    width:100%;
+    /* width:100%; */
     margin: 2rem 0;
     display: grid;
 
     grid-template-areas: 
         "footer-text social-links"
-        "copyright copyright";
+        "copyright .";
         
     @media screen and (${Device.tablet}) {
         grid-template-areas: 
@@ -97,7 +90,6 @@ export const FooterMain = styled.div`
 
     & > :nth-child(2) {
         grid-area: social-links;
-        width: calc(18.75rem + 21.5%);
         display: flex;
         gap: 1rem;
         align-self: flex-end;

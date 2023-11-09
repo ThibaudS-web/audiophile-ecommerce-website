@@ -12,6 +12,6 @@ export interface ButtonFactoryProps {
     handleClick?: () => void
     children: React.ReactNode
     color?: "primary" | "secondary"
-    btnType: 'outline' | 'shop'
+    isOutline: boolean
     $isReverseColor?: boolean
 }

@@ -3,21 +3,10 @@ import { Device } from "@/breakpoints"
 import Image from "next/image"
 import styled from "styled-components"
 
-// export const SectionWrapper = styled.section`
-//     width: 85%;
-//     margin: 8.75rem auto 0 auto;
-//     max-width: var(--bloc-desktop);
 
-//     @media screen and (${Device.tablet}) {
-//         width: 90%;
-//         max-width: var(--bloc-tablet);
-//     }
-// `
 
 export const CategoriesWrapper = styled.ul`
-    width: 85%;
-    max-width: var(--bloc-desktop);
-   
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,16 +14,13 @@ export const CategoriesWrapper = styled.ul`
     margin: auto;
 
     @media screen and (${Device.tablet}) {
-        gap: 0.6rem;
-        width: 90%;
-        max-width: var(--bloc-tablet);
+        gap: 0.6rem;    
     }
 
     @media screen and (${Device.mobileL}) {
         gap: 4.5rem;
         flex-direction: column;
     }
-
 `
 
 export const ItemList = styled.li`
@@ -72,3 +58,10 @@ export const NextImage = styled(Image)`
     }
 `
 
+export const Arrow = styled.span`
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid var(--brown);
+    border-top: 2px solid var(--brown);
+    transform: rotate(45deg);
+`

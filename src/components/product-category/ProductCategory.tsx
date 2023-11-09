@@ -19,10 +19,11 @@ const ProductCategory = ({ product, $isReverseLayout }: { product: Product, $isR
     const { name, description, categoryImage, slug } = product
     const pathname = usePathname()
     const { push } = useRouter()
-    
+
     const goToTheProductPage = (dataSlug: string) => {
         push(`${pathname}/${dataSlug}`)
     }
+    
     return (
         <ProductArticle $isReverseLayout={$isReverseLayout}>
             <Picture>
@@ -36,7 +37,7 @@ const ProductCategory = ({ product, $isReverseLayout }: { product: Product, $isR
                 <ProductText>
                     {description}
                 </ProductText>
-                <ButtonFactory handleClick={() => goToTheProductPage(slug)} btnType='outline' color='primary'>
+                <ButtonFactory handleClick={() => goToTheProductPage(slug)} isOutline color='primary'>
                     SEE PRODUCT
                 </ButtonFactory>
             </ProductInfos>

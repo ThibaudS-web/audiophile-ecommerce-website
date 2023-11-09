@@ -1,5 +1,6 @@
 "use client"
 import {
+    Arrow,
     CategoriesWrapper,
     ItemList,
     NextImage
@@ -11,7 +12,6 @@ import {
 } from "@/helpers/imagesCategories"
 import { useRouter } from "next/navigation"
 
-
 const Categories = () => {
     const router = useRouter()
 
@@ -21,13 +21,15 @@ const Categories = () => {
 
     return (
         <>
-
             <CategoriesWrapper>
                 {categories.map((category) => (
                     <ItemList key={category}>
                         <NextImage src={categoryImages(category).import} alt={category} priority />
                         <h6>{category}</h6>
-                        <ButtonFactory handleClick={() => handleClickShopBtn(category)} btnType='shop'>SHOP</ButtonFactory>
+                        <ButtonFactory handleClick={() => handleClickShopBtn(category)} isOutline={false}>
+                            SHOP
+                            <Arrow />
+                        </ButtonFactory>
                     </ItemList>
                 ))}
             </CategoriesWrapper>

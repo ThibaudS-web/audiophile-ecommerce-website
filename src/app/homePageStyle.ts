@@ -29,28 +29,17 @@ export const NewProductWrapper = styled.section`
 
 export const NewProductSectionWrapper = styled.div`
     display: flex;
-    width: 85%;
     margin: auto;
-    max-width: var(--bloc-desktop);
     align-items: center;
     overflow: hidden;
-   
-    @media screen and (${Device.tablet}) {
-        width: 90%;
-        max-width: var(--bloc-tablet);
-    }
 `
 export const OverviewProductsSection = styled.section`
     display: flex;
     flex-direction: column;
-    width: 85%;
-    max-width: var(--bloc-desktop);
     margin: 8.75rem  auto 12.5rem auto;
     gap: 3rem;
 
     @media screen and (${Device.tablet}) {
-        width: 90%;
-        max-width: var(--bloc-tablet);
         margin: 7.5rem  auto 10.625rem auto;
     }
 

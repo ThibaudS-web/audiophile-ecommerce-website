@@ -25,6 +25,8 @@ import {
   usePathname
 } from "next/navigation"
 
+import PageContainer from "@/components/container/PageContainer"
+
 export default function Home() {
   const pathname = usePathname()
   const { push } = useRouter()
@@ -36,78 +38,82 @@ export default function Home() {
   return (
     <>
       <NewProductWrapper>
-        <NewProductSectionWrapper>
-          <Banniere>
-            <DescriptionNewProduct>
-              <Overline>NEW PRODUCT</Overline>
-              <TitleNewProduct>XX99 Mark II Headphones</TitleNewProduct>
-              <ProductOverview>
-                Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
-              </ProductOverview>
+        <PageContainer>
+          <NewProductSectionWrapper>
+            <Banniere>
+              <DescriptionNewProduct>
+                <Overline>NEW PRODUCT</Overline>
+                <TitleNewProduct>XX99 Mark II Headphones</TitleNewProduct>
+                <ProductOverview>
+                  Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
+                </ProductOverview>
+                <ButtonFactory
+                  handleClick={() => goToTheProductPage("/headphones/xx99-mark-two-headphones")}
+                  isOutline
+                  color="primary"
+                >
+                  SEE PRODUCT
+                </ButtonFactory>
+              </DescriptionNewProduct>
+            </Banniere>
+          </NewProductSectionWrapper>
+        </PageContainer>
+      </NewProductWrapper>
+      
+      <PageContainer>
+        <Categories />
+
+        <OverviewProductsSection>
+
+          <PrimaryProduct>
+            <PrimaryImageContainer />
+            <DescriptionPrimaryProduct>
+              <h1>ZX9 SPEAKER</h1>
+              <p>
+                Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
+              </p>
               <ButtonFactory
-                handleClick={() => goToTheProductPage("/headphones/xx99-mark-two-headphones")}
-                btnType="outline"
-                color="primary"
+                handleClick={() => goToTheProductPage("/speakers/zx9-speaker")}
+                isOutline
+                color="secondary"
+                $isReverseColor
               >
                 SEE PRODUCT
               </ButtonFactory>
-            </DescriptionNewProduct>
-          </Banniere>
-        </NewProductSectionWrapper>
-      </NewProductWrapper>
+            </DescriptionPrimaryProduct>
+          </PrimaryProduct>
 
-      <Categories />
+          <SpeakerProduct>
+            <DescriptionSpeakerProduct>
+              <h4>ZX7 SPEAKER</h4>
+              <ButtonFactory
+                handleClick={() => goToTheProductPage("/speakers/zx7-speaker")}
+                isOutline
+                color="secondary"
+              >
+                SEE PRODUCT
+              </ButtonFactory>
+            </DescriptionSpeakerProduct>
+          </SpeakerProduct>
 
-      <OverviewProductsSection>
+          <EarphoneProductWrapper>
+            <EarphoneImage />
+            <DescriptionEarphoneProduct>
+              <h4>YX1 EARPHONES</h4>
+              <ButtonFactory
+                handleClick={() => goToTheProductPage("/earphones/yx1-earphones")}
+                isOutline
+                color="secondary"
+              >
+                SEE PRODUCT
+              </ButtonFactory>
+            </DescriptionEarphoneProduct>
+          </EarphoneProductWrapper>
 
-        <PrimaryProduct>
-          <PrimaryImageContainer />
-          <DescriptionPrimaryProduct>
-            <h1>ZX9 SPEAKER</h1>
-            <p>
-              Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
-            </p>
-            <ButtonFactory
-              handleClick={() => goToTheProductPage("/speakers/zx9-speaker")}
-              btnType="outline"
-              color="secondary"
-              $isReverseColor
-            >
-              SEE PRODUCT
-            </ButtonFactory>
-          </DescriptionPrimaryProduct>
-        </PrimaryProduct>
+        </OverviewProductsSection>
 
-        <SpeakerProduct>
-          <DescriptionSpeakerProduct>
-            <h4>ZX7 SPEAKER</h4>
-            <ButtonFactory
-              handleClick={() => goToTheProductPage("/speakers/zx7-speaker")}
-              btnType="outline"
-              color="secondary"
-            >
-              SEE PRODUCT
-            </ButtonFactory>
-          </DescriptionSpeakerProduct>
-        </SpeakerProduct>
-
-        <EarphoneProductWrapper>
-          <EarphoneImage />
-          <DescriptionEarphoneProduct>
-            <h4>YX1 EARPHONES</h4>
-            <ButtonFactory
-              handleClick={() => goToTheProductPage("/earphones/yx1-earphones")}
-              btnType="outline"
-              color="secondary"
-            >
-              SEE PRODUCT
-            </ButtonFactory>
-          </DescriptionEarphoneProduct>
-        </EarphoneProductWrapper>
-
-      </OverviewProductsSection>
-
-      <AudiophileSummary />
+        <AudiophileSummary />
+      </PageContainer>
     </>
   )
 }

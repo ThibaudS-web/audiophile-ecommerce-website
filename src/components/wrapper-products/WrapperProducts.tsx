@@ -3,12 +3,12 @@ import { Product } from '@/models/product'
 import ProductCategory from '../product-category/ProductCategory'
 import getSortedProductByNewTagAndAlpha from '@/helpers/sortByNewTag'
 
-const Products = ({ products }: { products: Product[] }) => {
+const Products = ({ products }: { products: Product[] | undefined }) => {
     const SortedProducts = getSortedProductByNewTagAndAlpha(products)
 
     return (
         <Wrapper>
-            {SortedProducts.map((product, index) => {
+            {SortedProducts ? SortedProducts.map((product, index) => {
                 const calculateReverseLayout = index % 2 === 1
 
                 return <ProductCategory
@@ -16,7 +16,7 @@ const Products = ({ products }: { products: Product[] }) => {
                     $isReverseLayout={calculateReverseLayout}
                     product={product}
                 />
-            })}
+            }) : null}
         </Wrapper>
     )
 }

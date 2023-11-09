@@ -3,8 +3,6 @@ import { Device } from "@/breakpoints"
 import styled from "styled-components"
 
 export const AudiophileSummaryWrapper = styled.div`
-    width: 85%;
-    max-width: var(--bloc-desktop);
     margin-top: 5.75rem;
     display: flex;
     justify-content: space-between;
@@ -13,11 +11,6 @@ export const AudiophileSummaryWrapper = styled.div`
 
     @media screen and (${Device.laptop}) {
         flex-direction: column-reverse;
-    }
-
-    @media screen and (${Device.tablet}) {
-        width: 90%;
-        max-width: var(--bloc-tablet);
     }
 `
 

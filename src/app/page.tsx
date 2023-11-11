@@ -20,15 +20,12 @@ import {
 } from "./homePageStyle"
 import ButtonFactory from "@/components/button/ButtonFactory"
 import AudiophileSummary from "@/components/audiophile-summary/AudiophileSummary"
-import {
-  useRouter,
-  usePathname
-} from "next/navigation"
+import { useRouter } from "next/navigation"
 
 import PageContainer from "@/components/container/PageContainer"
 
 export default function Home() {
-  const pathname = usePathname()
+
   const { push } = useRouter()
 
   const goToTheProductPage = (url: string) => {
@@ -59,7 +56,7 @@ export default function Home() {
           </NewProductSectionWrapper>
         </PageContainer>
       </NewProductWrapper>
-      
+
       <PageContainer>
         <Categories />
 
@@ -89,7 +86,7 @@ export default function Home() {
               <ButtonFactory
                 handleClick={() => goToTheProductPage("/speakers/zx7-speaker")}
                 isOutline
-                color="secondary"
+                color="secondary"              
               >
                 SEE PRODUCT
               </ButtonFactory>

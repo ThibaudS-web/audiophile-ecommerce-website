@@ -16,21 +16,28 @@ export const PageContainer = styled.div`
 export const GoBackBtn = styled(ButtonMinimal)`
     font-size: 0.9375rem;
     margin: 5rem 0 3.75rem 0;
-`
-export const ProductArticle = styled.article<{ $isReverseLayout?: boolean }>`
-    display: flex;
-    flex-direction: ${(props) => props.$isReverseLayout ? "row-reverse" : "row"};
-    justify-content: space-between;
-    gap: 7.8125rem;
 
-    @media screen and (${Device.laptop}) {
-        flex-direction: column;
-        gap: 3.125rem;
-        justify-content: center;
+    @media screen and (${Device.tablet}) {
+        margin: 2.5rem 0 1.5rem 0;
     }
+    @media screen and (${Device.mobileL}) {
+        margin-top: 1.568rem;
+    }
+`
+export const ProductArticle = styled.article`
+    display: flex;
+    justify-content: space-between;
+  
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+        gap: 2rem;
+    }  
+
 `
 export const Picture = styled.picture`
     width: 100%;
+    min-width: 150px;
+    align-self: center;
 `
 export const ProductImage = styled.img`
     height: auto;
@@ -40,19 +47,24 @@ export const ProductImage = styled.img`
     object-fit: cover;
     display: block;
 `
-export const ProductInfos = styled.div<{ $isReverseLayout?: boolean }>`
+export const ProductInfos = styled.div`
     width: 82%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 7.8125rem;
 
     @media screen and (${Device.laptop}) {
+        margin-left: 4.375rem;
         width: 100%;
-        align-items: center;
+        align-items: flex-start;
 
         & > * {
-            text-align: center;
+            text-align: left;
         }
+    }
+    @media screen and (max-width: 600px) {
+        margin-left: 0;
     }
 
 `
@@ -76,3 +88,81 @@ export const ProductPrice = styled.span`
     font-weight: bold;
     margin-bottom: 2.5rem;
 `
+export const WrapperCartCTA = styled.div`
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    
+`
+export const WrapperFeaturesAndBox = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10rem;
+
+    @media screen and (${Device.tablet}) {
+        flex-direction: column;
+        gap: 7.5rem;
+    }
+`
+
+export const FeaturesWrapper = styled.div`
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media screen and (${Device.tablet}) {
+        width: 100%;
+    }
+
+    @media screen and (${Device.mobileL}) {
+        gap: 1.5rem;
+    }
+
+    & > p {
+        color: rgba( 0, 0, 0, 0.5);
+        white-space: pre-line;
+    }
+`
+export const BoxWrapper = styled.div`
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media screen and (${Device.tablet}) {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 85%;
+        min-width: 410px;
+    }
+
+    @media screen and (${Device.mobileL}) {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+`
+export const IncludeItems = styled.ul`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;   
+`
+export const BoxItemList = styled.li`
+    list-style: none;
+    color: rgba( 0, 0, 0, 0.5);
+
+    & > span {
+        color: var(--brown);
+        font-weight: bold;
+        margin-right: 1.5rem;
+    }
+`
+
+export const TitleOthersProducts = styled.h3`
+    margin-top: 10rem;
+    text-align: center;
+`
+
+

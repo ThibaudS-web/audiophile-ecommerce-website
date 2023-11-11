@@ -7,7 +7,7 @@ export const ProductArticle = styled.article<{ $isReverseLayout?: boolean }>`
     flex-direction: ${(props) => props.$isReverseLayout ? "row-reverse" : "row"};
     justify-content: space-between;
     gap: 7.8125rem;
-
+    
     @media screen and (${Device.laptop}) {
         flex-direction: column;
         gap: 3.125rem;

@@ -7,13 +7,13 @@ import getProducts from "@/services/useProducts"
 import { useQuery } from "@tanstack/react-query"
 import { notFound, usePathname } from "next/navigation"
 import PageContainer from "@/components/container/PageContainer"
+import { WrapperBottom } from "./categoryPageStyle"
 
-
-const page = ({ params }: { params: { category: string } }) => {
+const Page = ({ params }: { params: { category: string } }) => {
     const { category } = params
     const pathname = usePathname()
 
-    const { getProductsByCategory } = getProducts()
+    const { getProductsByCategory, getAllProducts } = getProducts()
 
     const categoriespath = ["/earphones", "/headphones", "/speakers"]
 
@@ -21,24 +21,24 @@ const page = ({ params }: { params: { category: string } }) => {
         notFound()
     }
 
-    const { data: products, isPending } = useQuery({
+    const { data: products } = useQuery({
         queryKey: ['productsByCategory', category],
-        queryFn: () => getProductsByCategory(category)
+        queryFn: () => getProductsByCategory(category),
+        staleTime: 120000
     })
-
-
 
     return (
         <>
             <CategoryHeader category={category} />
-
             <PageContainer>
-                {!isPending ? <Products products={products!} /> : null}
-                <Categories />
-                <AudiophileSummary />
+                <Products products={products} />
+                <WrapperBottom>
+                    <Categories />
+                    <AudiophileSummary />
+                </WrapperBottom>
             </PageContainer>
         </>
     )
 }
 
-export default page 
+export default Page 

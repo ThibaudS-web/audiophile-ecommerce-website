@@ -74,4 +74,12 @@ export const BtnOutline = styled.button<{ color: "primary" | "secondary", $isRev
     cursor: pointer;
     ${(props) => generateStyle(props.color, props.$isReverseColor)}
 
+    &:disabled{
+        opacity: 0.5;
+        cursor: unset;  
+
+        &:hover{
+            background-color: ${(props) => props.color === "primary" ? "var(--brown)" : "black"};
+        }
+    }
 `;

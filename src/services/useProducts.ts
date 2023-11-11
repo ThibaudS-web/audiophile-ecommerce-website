@@ -1,4 +1,3 @@
-'use client'
 import { Product } from "@/models/product"
 
 export default function useProducts() {
@@ -6,43 +5,39 @@ export default function useProducts() {
 
     const getAllProducts = async (): Promise<Product[]> => {
         const result = await fetch(path)
+
         if (!result.ok) {
             throw new Error("Error with fetching products!")
         }
-        const data: Product[] = await result.json()
 
+        const data: Product[] = await result.json()
         return data
     }
 
     const getProductsByCategory = async (category: string): Promise<Product[]> => {
-        const result = await fetch(path)
-        try {
-            const data: Product[] = await result.json()
-            const productsInCategory = data.filter(product => product.category === category)
+        const result = await getAllProducts()
+        const data: Product[] = result
 
-            return productsInCategory
-        } catch {
-            throw new Error("Error with fetching products!")
-        }
+        const productsInCategory = data.filter(product => product.category === category)
+
+        return productsInCategory
     }
 
     const getProductBySlug = async (slug: string): Promise<Product> => {
-        const result = await fetch(path)
-        try {
-            const data: Product[] = await result.json();
-            const productBySlug = data.find(product => product.slug === slug);
+        const result = await getAllProducts()
+        const data: Product[] = result
 
-            if (!productBySlug) {
-                throw new Error(`Product with slug '${slug}' not found!`)
-            }
+        const productBySlug = data.find(product => product.slug === slug)
 
-            return productBySlug
-        } catch (error) {
-            throw new Error("Error with fetching products!")
+        if (!productBySlug) {
+            throw new Error(`Product with slug '${slug}' not found!`)
         }
+
+        return productBySlug
     }
-
-
     return { getAllProducts, getProductsByCategory, getProductBySlug }
 }
+
+
+
 

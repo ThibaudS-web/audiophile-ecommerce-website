@@ -11,7 +11,7 @@ const Navigation = ({ type }: { type: "header" | "footer" }) => {
 
     return (
         <NavigationWrapper type={type}>
-            <StyledLink className={`${activeClassManagement("/")}`} href="/">HOME</StyledLink>
+            <StyledLink  className={`${activeClassManagement("/")}`} href="/">HOME</StyledLink>
             <StyledLink className={`${activeClassManagement("/headphones")}`} href="/headphones">HEADPHONES</StyledLink>
             <StyledLink className={`${activeClassManagement("/speakers")}`} href="/speakers">SPEAKERS</StyledLink>
             <StyledLink className={`${activeClassManagement("/earphones")}`} href="/earphones">EARPHONES</StyledLink>

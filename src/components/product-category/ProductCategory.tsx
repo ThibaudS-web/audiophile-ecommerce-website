@@ -23,7 +23,7 @@ const ProductCategory = ({ product, $isReverseLayout }: { product: Product, $isR
     const goToTheProductPage = (dataSlug: string) => {
         push(`${pathname}/${dataSlug}`)
     }
-    
+
     return (
         <ProductArticle $isReverseLayout={$isReverseLayout}>
             <Picture>

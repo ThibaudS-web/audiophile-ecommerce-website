@@ -13,7 +13,7 @@ const Page = ({ params }: { params: { category: string } }) => {
     const { category } = params
     const pathname = usePathname()
 
-    const { getProductsByCategory, getAllProducts } = getProducts()
+    const { getProductsByCategory } = getProducts()
 
     const categoriespath = ["/earphones", "/headphones", "/speakers"]
 

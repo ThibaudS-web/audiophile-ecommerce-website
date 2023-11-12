@@ -21,7 +21,7 @@ import {
     WrapperCartCTA,
     WrapperFeaturesAndBox
 } from "./productPageStyle"
-import { notFound, useRouter } from "next/navigation"
+import { notFound, usePathname, useRouter } from "next/navigation"
 import ButtonFactory from "@/components/button/ButtonFactory"
 import { Device } from "@/breakpoints"
 import convertNumberToMoney from "@/helpers/NumberToMoney"
@@ -37,13 +37,15 @@ const Page = ({ params }: { params: { slug: string } }) => {
     const { back } = useRouter()
     const [isDisabled, setIsDisabled] = useState(true)
     const { getProductBySlug } = getProducts()
+    const pathname = usePathname()
+    const categoryPath = pathname.split('/')[1]
 
     const { data: product, failureCount } = useQuery({
         queryKey: ['productBySlug', slug],
         queryFn: () => getProductBySlug(slug)
     })
 
-    if (failureCount > 0) {
+    if (failureCount > 0 || product && product?.category !== categoryPath) {
         notFound()
     }
 

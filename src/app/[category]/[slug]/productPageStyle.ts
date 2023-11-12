@@ -142,6 +142,7 @@ export const BoxWrapper = styled.div`
     @media screen and (${Device.mobileL}) {
         flex-direction: column;
         gap: 1.5rem;
+        min-width: unset;
     }
 `
 export const IncludeItems = styled.ul`

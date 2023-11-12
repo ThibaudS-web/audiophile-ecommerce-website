@@ -27,6 +27,10 @@ import { Device } from "@/breakpoints"
 import convertNumberToMoney from "@/helpers/NumberToMoney"
 import ButtonCart from "@/components/button/button-cart/ButtonCart"
 import Gallery from "@/components/gallery-image-product/Gallery"
+import OtherProducts from "@/components/otherProducts/OtherProducts"
+import Wrapper from "@/components/containers/bottom-categories-audio-summary/Wrapper"
+import Categories from "@/components/categories/Categories"
+import AudiophileSummary from "@/components/audiophile-summary/AudiophileSummary"
 
 const Page = ({ params }: { params: { slug: string } }) => {
     const { slug } = params
@@ -105,6 +109,11 @@ const Page = ({ params }: { params: { slug: string } }) => {
                         <TitleOthersProducts>
                             you may also like
                         </TitleOthersProducts>
+                        <OtherProducts product={product} />
+                        <Wrapper>
+                            <Categories />
+                            <AudiophileSummary />
+                        </Wrapper>
                     </>
                     : null
                 }

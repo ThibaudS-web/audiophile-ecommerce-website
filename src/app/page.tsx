@@ -22,7 +22,7 @@ import ButtonFactory from "@/components/button/ButtonFactory"
 import AudiophileSummary from "@/components/audiophile-summary/AudiophileSummary"
 import { useRouter } from "next/navigation"
 
-import PageContainer from "@/components/container/PageContainer"
+import PageContainer from "@/components/containers/page/PageContainer"
 
 export default function Home() {
 
@@ -86,7 +86,7 @@ export default function Home() {
               <ButtonFactory
                 handleClick={() => goToTheProductPage("/speakers/zx7-speaker")}
                 isOutline
-                color="secondary"              
+                color="secondary"
               >
                 SEE PRODUCT
               </ButtonFactory>

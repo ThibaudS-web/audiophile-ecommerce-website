@@ -31,12 +31,14 @@ import OtherProducts from "@/components/otherProducts/OtherProducts"
 import Wrapper from "@/components/containers/bottom-categories-audio-summary/Wrapper"
 import Categories from "@/components/categories/Categories"
 import AudiophileSummary from "@/components/audiophile-summary/AudiophileSummary"
+import Head from "next/head"
 
 const Page = ({ params }: { params: { slug: string } }) => {
     const { slug } = params
     const { back } = useRouter()
     const [isDisabled, setIsDisabled] = useState(true)
-    const { getProductBySlug } = getProducts()
+    const { getProductBySlug, getAllProducts } = getProducts()
+
     const pathname = usePathname()
     const categoryPath = pathname.split('/')[1]
 
@@ -45,12 +47,26 @@ const Page = ({ params }: { params: { slug: string } }) => {
         queryFn: () => getProductBySlug(slug)
     })
 
+    const { data: AllProducts } = useQuery({
+        queryKey: ['products'],
+        queryFn: getAllProducts
+    })
+
+    const getDataOthers = product?.others?.map(other => AllProducts?.find(product => product.slug === other.slug))
+
+    const getURLOfothersProducts = getDataOthers?.map(other => {
+        return `/${other?.category}/${other?.slug}`
+    })
+
     if (failureCount > 0 || product && product?.category !== categoryPath) {
         notFound()
     }
 
     return (
         <>
+            <Head>
+                <title>Audiophile - {product?.name}</title>
+            </Head>
             <PageContainer>
                 <GoBackBtn handleClick={back}>Go back</GoBackBtn>
                 {product ?
@@ -111,7 +127,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
                         <TitleOthersProducts>
                             you may also like
                         </TitleOthersProducts>
-                        <OtherProducts product={product} />
+                        <OtherProducts othersURL={getURLOfothersProducts} product={product} />
                         <Wrapper>
                             <Categories />
                             <AudiophileSummary />

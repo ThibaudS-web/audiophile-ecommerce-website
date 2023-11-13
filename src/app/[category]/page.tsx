@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query"
 import { notFound, usePathname } from "next/navigation"
 import PageContainer from "@/components/containers/page/PageContainer"
 import { Wrapper } from "@/components/wrapper-products/wrapperProductStyle"
+import Head from "next/head"
 
 const Page = ({ params }: { params: { category: string } }) => {
     const { category } = params
@@ -29,6 +30,9 @@ const Page = ({ params }: { params: { category: string } }) => {
 
     return (
         <>
+            <Head>
+                <title>Audiophile - {category}</title>
+            </Head>
             <CategoryHeader category={category} />
             <PageContainer>
                 <Products products={products} />

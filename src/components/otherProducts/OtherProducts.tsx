@@ -4,20 +4,24 @@ import React from 'react'
 import { OtherProduct, OtherProductsWrapper, PictureOtherProduct, Img } from './otherProductsStyle'
 import ButtonOutline from '../button/button-outline/ButtonOutline'
 import { useRouter } from 'next/navigation'
-import { Device } from '@/breakpoints'
 
-const OtherProducts = ({ product }: { product: Product }) => {
-    const { others, slug, category } = product
+const OtherProducts = ({ product, othersURL }: { product: Product, othersURL: string[] | undefined }) => {
+    const { others } = product
 
     const { push } = useRouter()
 
+    const goToTheProductPage = (slug: string) => {
+        const url = othersURL?.find(product => product.includes(`${slug}`))
+        if (url) {
+            push(url)
+        } else {
+            throw new Error("URL not found!")
+        }
+    }
 
     return (
         <OtherProductsWrapper>
             {others?.map((product) => {
-                // const goToTheProductPage = () => {
-                //     push(`/${category}/${product.slug}`)
-                // }
                 return <OtherProduct key={product.name}>
                     <PictureOtherProduct>
                         <source srcSet={product.image?.tablet} media={`(min-width: 700px) and (max-width: 1024px)`} />
@@ -25,10 +29,10 @@ const OtherProducts = ({ product }: { product: Product }) => {
                         <Img src={product.image?.desktop} alt={product.name} />
                     </PictureOtherProduct>
                     <h5>{product.name}</h5>
-                    <ButtonOutline handleClick={() => {}} color='primary'>SEE PRODUCT</ButtonOutline>
+                    <ButtonOutline handleClick={() => goToTheProductPage(product.slug)} color='primary'>SEE PRODUCT</ButtonOutline>
                 </OtherProduct>
             })}
-        </OtherProductsWrapper>
+        </OtherProductsWrapper >
     )
 }
 

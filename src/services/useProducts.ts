@@ -23,10 +23,11 @@ export default function useProducts() {
         return productsInCategory
     }
 
+
     const getProductBySlug = async (slug: string): Promise<Product> => {
         const result = await getAllProducts()
         const data: Product[] = result
-
+        
         const productBySlug = data.find(product => product.slug === slug)
 
         if (!productBySlug) {
@@ -35,6 +36,7 @@ export default function useProducts() {
 
         return productBySlug
     }
+
     return { getAllProducts, getProductsByCategory, getProductBySlug }
 }
 

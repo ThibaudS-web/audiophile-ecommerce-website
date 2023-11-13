@@ -47,12 +47,14 @@ const Page = ({ params }: { params: { slug: string } }) => {
         queryFn: () => getProductBySlug(slug)
     })
 
-    const { data: AllProducts } = useQuery({
+    const { data: allProducts } = useQuery({
         queryKey: ['products'],
         queryFn: getAllProducts
     })
 
-    const getDataOthers = product?.others?.map(other => AllProducts?.find(product => product.slug === other.slug))
+    const getDataOthers = product?.others?.map(
+        (other) => allProducts?.find(product => product.slug === other.slug)
+    )
 
     const getURLOfothersProducts = getDataOthers?.map(other => {
         return `/${other?.category}/${other?.slug}`

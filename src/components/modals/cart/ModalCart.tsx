@@ -1,4 +1,3 @@
-"use client"
 import { CartContext } from '@/context/cart/CartContext'
 import React, { useContext } from 'react'
 import {
@@ -25,7 +24,8 @@ const ModalCart = () => {
         isModalOpen,
         handleModalDisplay,
         totalPrice,
-        removeCart
+        removeCart,
+        checkout
     } = useContext(CartContext)
 
     const handleCloseModal = (event: React.MouseEvent) => {
@@ -70,7 +70,7 @@ const ModalCart = () => {
                                             <TotalLabel>TOTAL</TotalLabel>
                                             <TotalPrice>{convertNumberToMoney(totalPrice)}</TotalPrice>
                                         </TotalWrapper>
-                                        <CheckoutButton handleClick={() => { }} color='primary'>CHECKOUT</CheckoutButton>
+                                        <CheckoutButton handleClick={checkout} color='primary'>CHECKOUT</CheckoutButton>
                                     </>
                                 }
                             </Modal>

@@ -1,10 +1,11 @@
 "use client"
-import React, { useContext, useRef } from 'react'
+import React, { useContext } from 'react'
 import {
   Container,
   HeaderWrapper,
   LogoLink,
-  MenuAndLogoWrapper
+  MenuAndLogoWrapper,
+  TotalItemsInCart
 } from './headerStyle'
 import CartSVG from '../svg/cart/CartSVG'
 import { CartSVGWrapper } from '../svg/cart/cartStyle'
@@ -14,13 +15,11 @@ import Navigation from '../navigation/Navigation'
 import { CartContext } from '@/context/cart/CartContext'
 
 const Header = () => {
-  const { isModalOpen, handleModalDisplay } = useContext(CartContext)
-
-  const handleClickCart = () => {
-    handleModalDisplay()
-
-    console.log('Clicked on Cart!', isModalOpen)
-  }
+  const {
+    handleModalDisplay,
+    getTotalProductsNumberInCart,
+    itemsList
+  } = useContext(CartContext)
 
   const handleClickHamburgerMenu = () => {
     //TODO: Need to be implemented
@@ -37,9 +36,20 @@ const Header = () => {
           </LogoLink>
         </MenuAndLogoWrapper>
         <Navigation type='header' />
-        <CartSVGWrapper onClick={handleClickCart}>
-          <CartSVG fill='white' />
-        </CartSVGWrapper>
+        <div onClick={handleModalDisplay} style={{ position: "relative" }}>
+          {
+            itemsList.length > 0 ?
+              <TotalItemsInCart>
+                {getTotalProductsNumberInCart()}
+              </TotalItemsInCart>
+              :
+              null
+          }
+          <CartSVGWrapper >
+            <CartSVG fill='white' />
+          </CartSVGWrapper>
+        </div>
+
       </Container>
     </HeaderWrapper>
   )

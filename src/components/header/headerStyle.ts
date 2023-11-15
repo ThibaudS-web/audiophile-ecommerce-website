@@ -40,4 +40,19 @@ export const MenuAndLogoWrapper = styled.div`
         display: contents;
     }
 `
-
+export const TotalItemsInCart = styled.span`
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--brown);
+    color: white;
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    z-index:1;
+    font-size: 0.7rem;
+    cursor: pointer;
+`

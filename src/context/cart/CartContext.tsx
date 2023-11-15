@@ -12,6 +12,7 @@ const initial: ICartContext = {
     removeCart: () => { },
     removeItem: () => { },
     addItem: () => { },
+    getTotalProductsNumberInCart: () => 0,
     setIsModalOpen: () => { },
     setDifferentItemsInCart: () => { },
     setItemsList: () => { },
@@ -31,11 +32,16 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [isModalOpen, setIsModalOpen] = useState(initial.isModalOpen)
 
     const checkout = () => {
+        handleModalDisplay()
         push("/checkout")
     }
 
     const handleModalDisplay = () => {
         setIsModalOpen(prevValue => !prevValue)
+    }
+
+    const getTotalProductsNumberInCart = () => {
+        return itemsList.reduce((acc, curr) => acc + curr.quantity, 0)
     }
 
     const removeCart = () => {
@@ -60,6 +66,7 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
         differentItemsInCart,
         totalPrice,
         isModalOpen,
+        getTotalProductsNumberInCart,
         removeCart,
         removeItem,
         addItem,

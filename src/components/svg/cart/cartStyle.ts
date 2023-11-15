@@ -10,6 +10,7 @@ export const Path = styled.path`
 export const CartSVGWrapper = styled.div`
     display: flex;
     align-items: center;
+    position: relative;
     
     &:hover {
         svg > path {  

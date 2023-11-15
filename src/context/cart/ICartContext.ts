@@ -13,6 +13,7 @@ interface CartContext {
     removeCart: () => void
     removeItem: (item: ProductCart) => void
     addItem: (item: ProductCart, quantity: number, isCartContext?: boolean) => void
+    getTotalProductsNumberInCart: () => number
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
     setDifferentItemsInCart: React.Dispatch<React.SetStateAction<number>>
     setItemsList: React.Dispatch<React.SetStateAction<ProductCart[]>>

@@ -1,18 +1,23 @@
-type ProductCart = {
+export interface ProductCart {
     imagePath: string
     productName: string
-    productPrice: string
+    productPrice: number
     quantity: number
 }
 
 interface CartContext {
     itemsList: ProductCart[]
     differentItemsInCart: number
-    totalPrice: string
-
+    totalPrice: number
+    isModalOpen: boolean
+    removeCart: () => void
+    removeItem: (item: ProductCart) => void
+    addItem: (item: ProductCart, quantity: number, isCartContext?: boolean) => void
+    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
     setDifferentItemsInCart: React.Dispatch<React.SetStateAction<number>>
     setItemsList: React.Dispatch<React.SetStateAction<ProductCart[]>>
-    setTotalPrice: React.Dispatch<React.SetStateAction<string>>
+    setTotalPrice: React.Dispatch<React.SetStateAction<number>>
+    handleModalDisplay: () => void
     checkout: () => void
 }
 

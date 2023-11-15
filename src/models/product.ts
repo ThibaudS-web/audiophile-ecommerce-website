@@ -3,7 +3,7 @@ export interface Product {
     slug: string
     name: string
     shortName: string
-    image?: CategoryImage
+    image: CategoryImage
     cartImage: string
     cartQuantity?: number
     category: string

@@ -10,34 +10,34 @@ export default function useProducts() {
             throw new Error("Error with fetching products!")
         }
 
-        const data: Product[] = await result.json()
-        return data
+        return await result.json()
+    }
+
+    const getCategories = async (): Promise<string[]> => {
+        const result = await getAllProducts()
+        const setCategories = new Set(result.map((product) => product.category))
+
+        return Array.from(setCategories)
     }
 
     const getProductsByCategory = async (category: string): Promise<Product[]> => {
         const result = await getAllProducts()
-        const data: Product[] = result
-
-        const productsInCategory = data.filter(product => product.category === category)
-
-        return productsInCategory
+        return result.filter((product) => product.category === category)
     }
-
 
     const getProductBySlug = async (slug: string): Promise<Product> => {
         const result = await getAllProducts()
-        const data: Product[] = result
-        
-        const productBySlug = data.find(product => product.slug === slug)
 
-        if (!productBySlug) {
+        const productBySlug = result.find((product) => product.slug === slug)
+
+        if (productBySlug === undefined) {
             throw new Error(`Product with slug '${slug}' not found!`)
         }
 
         return productBySlug
     }
 
-    return { getAllProducts, getProductsByCategory, getProductBySlug }
+    return { getAllProducts, getProductsByCategory, getProductBySlug, getCategories }
 }
 
 

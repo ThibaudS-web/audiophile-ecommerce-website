@@ -1,5 +1,4 @@
 "use client"
-import { Device } from "@/breakpoints"
 import styled, { css } from "styled-components"
 
 const globalStyle = css`
@@ -18,9 +17,9 @@ const globalButtonStyle = css`
         color: var(--brown);
     }
 `
-export const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div<{ $isCartContext?: boolean }>`
     display: flex;
-    height: 3rem;
+    height: ${(props) => props.$isCartContext ? "2rem" : "3rem"};
 
         width: 30%;
         min-width: 50px;

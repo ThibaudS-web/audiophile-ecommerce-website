@@ -55,4 +55,8 @@ export const ProductText = styled.p`
 export const ProductName = styled.h2`
     margin-bottom: 2.5rem;
     width: 80%;
+
+    @media screen and (${Device.mobileL}) {
+        font-size: 1.75rem;
+    }
 `

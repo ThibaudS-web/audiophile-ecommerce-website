@@ -21,7 +21,6 @@ import {
 import ButtonFactory from "@/components/button/ButtonFactory"
 import AudiophileSummary from "@/components/audiophile-summary/AudiophileSummary"
 import { useRouter } from "next/navigation"
-
 import PageContainer from "@/components/containers/page/PageContainer"
 
 export default function Home() {

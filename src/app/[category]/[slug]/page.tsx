@@ -1,7 +1,7 @@
 "use client"
 import getProducts from "@/services/useProducts"
 import { useQuery } from "@tanstack/react-query"
-import React, { useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import {
     BoxItemList,
     BoxWrapper,
@@ -22,25 +22,27 @@ import {
     WrapperFeaturesAndBox
 } from "./productPageStyle"
 import { notFound, usePathname, useRouter } from "next/navigation"
-import ButtonFactory from "@/components/button/ButtonFactory"
 import { Device } from "@/breakpoints"
 import convertNumberToMoney from "@/helpers/NumberToMoney"
-import ButtonCart from "@/components/button/button-cart/ButtonCart"
+import ButtonQuantity from "@/components/button/button-quantity/ButtonQuantity"
 import Gallery from "@/components/gallery-image-product/Gallery"
 import OtherProducts from "@/components/otherProducts/OtherProducts"
 import Wrapper from "@/components/containers/bottom-categories-audio-summary/Wrapper"
 import Categories from "@/components/categories/Categories"
 import AudiophileSummary from "@/components/audiophile-summary/AudiophileSummary"
-import Head from "next/head"
+import ButtonOutline from "@/components/button/button-outline/ButtonOutline"
+import { CartContext } from "@/context/cart/CartContext"
+import { Product } from "@/models/product"
+import { ProductCart } from "@/context/cart/ICartContext"
 
 const Page = ({ params }: { params: { slug: string } }) => {
     const { slug } = params
     const { back } = useRouter()
-    const [isDisabled, setIsDisabled] = useState(true)
     const { getProductBySlug, getAllProducts } = getProducts()
-
+    const { setTotalPrice, itemsList, addItem } = useContext(CartContext)
     const pathname = usePathname()
     const categoryPath = pathname.split('/')[1]
+    const [itemQuantity, setItemQuantity] = useState(1)
 
     const { data: product, failureCount } = useQuery({
         queryKey: ['productBySlug', slug],
@@ -64,11 +66,26 @@ const Page = ({ params }: { params: { slug: string } }) => {
         notFound()
     }
 
+    const handleAddToCart = (product: Product, quantity: number) => {
+        const newItem: ProductCart = {
+            productName: product.shortName,
+            imagePath: product.cartImage,
+            productPrice: product.price,
+            quantity: quantity
+        }
+
+        addItem(newItem, quantity)
+    }
+
+    useEffect(() => {
+        setTotalPrice(itemsList.reduce(
+            (accumulator, currentValue) => accumulator + currentValue.productPrice * currentValue.quantity,
+            0,
+        ))
+    }, [itemsList])
+
     return (
         <>
-            <Head>
-                <title>Audiophile - {product?.name}</title>
-            </Head>
             <PageContainer>
                 <GoBackBtn handleClick={back}>Go back</GoBackBtn>
                 {product ?
@@ -92,13 +109,15 @@ const Page = ({ params }: { params: { slug: string } }) => {
                                 </ProductText>
                                 <ProductPrice>{convertNumberToMoney(product.price)}</ProductPrice>
                                 <WrapperCartCTA>
-                                    <ButtonCart handleIsDisabledStateButton={setIsDisabled} />
-                                    <ButtonFactory
-                                        disabled={isDisabled}
-                                        handleClick={() => { }}
-                                        isOutline color='primary'>
+                                    <ButtonQuantity
+                                        quantity={itemQuantity}
+                                        setQuantity={setItemQuantity}
+                                    />
+                                    <ButtonOutline
+                                        handleClick={() => handleAddToCart(product, itemQuantity)}
+                                        color='primary'>
                                         ADD TO CART
-                                    </ButtonFactory>
+                                    </ButtonOutline>
                                 </WrapperCartCTA>
                             </ProductInfos>
                         </ProductArticle>
@@ -143,3 +162,4 @@ const Page = ({ params }: { params: { slug: string } }) => {
 }
 
 export default Page
+

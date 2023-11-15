@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 0.9375rem;
         line-height: 1.5625rem;
         font-weight: 500;
-        background-color: var(--grey-light)
+        background-color: var(--grey-light);
     }
 
     h1, h2, h3, h4, h5, h6 {

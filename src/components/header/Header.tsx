@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import {
   Container,
   HeaderWrapper,
@@ -11,12 +11,15 @@ import { CartSVGWrapper } from '../svg/cart/cartStyle'
 import Logo from '../svg/logo/Logo'
 import HamburgerSVG from '../svg/menu-hamburger/HamburgerSVG'
 import Navigation from '../navigation/Navigation'
+import { CartContext } from '@/context/cart/CartContext'
 
 const Header = () => {
+  const { isModalOpen, handleModalDisplay } = useContext(CartContext)
 
   const handleClickCart = () => {
-    //TODO: Need to be implemented
-    console.log('Clicked on Cart!')
+    handleModalDisplay()
+
+    console.log('Clicked on Cart!', isModalOpen)
   }
 
   const handleClickHamburgerMenu = () => {
@@ -35,7 +38,7 @@ const Header = () => {
         </MenuAndLogoWrapper>
         <Navigation type='header' />
         <CartSVGWrapper onClick={handleClickCart}>
-          <CartSVG />
+          <CartSVG fill='white' />
         </CartSVGWrapper>
       </Container>
     </HeaderWrapper>

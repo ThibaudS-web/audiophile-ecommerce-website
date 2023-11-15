@@ -9,7 +9,8 @@ const manrope = Manrope({ subsets: ['latin'], weight: ['400', '500', '700'] })
 export const metadata: Metadata = {
   title: 'Audiophile',
   description: 'Fictitious audiophile e-commerce website built with Next.js and Styled-Components.',
-  authors: { name: "Thibaud Saumureau", url: "https://portfolio-thibauds.vercel.app/" }
+  authors: { name: "Thibaud Saumureau", url: "https://portfolio-thibauds.vercel.app/" },
+  
 }
 
 export default function RootLayout({

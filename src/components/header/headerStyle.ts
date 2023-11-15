@@ -7,12 +7,12 @@ export const HeaderWrapper = styled.header`
     width: 100%;
     background-color: var(--black-header);
     position: sticky;
-    z-index:99;
+    z-index: 5;
 `
 
 export const Container = styled.div`
     width: 85%;
-    height: 90px;
+    height: 5.625rem;
     max-width: var(--bloc-desktop);
     border-bottom: 2px solid #363636;
     background-color: var(--black-header);

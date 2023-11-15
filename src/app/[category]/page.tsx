@@ -8,13 +8,17 @@ import { useQuery } from "@tanstack/react-query"
 import { notFound, usePathname } from "next/navigation"
 import PageContainer from "@/components/containers/page/PageContainer"
 import { Wrapper } from "@/components/wrapper-products/wrapperProductStyle"
-import Head from "next/head"
 
 const Page = ({ params }: { params: { category: string } }) => {
     const { category } = params
+    const { getProductsByCategory } = getProducts()
     const pathname = usePathname()
 
-    const { getProductsByCategory } = getProducts()
+    const { data: products } = useQuery({
+        queryKey: ['productsByCategory', category],
+        queryFn: () => getProductsByCategory(category),
+        staleTime: 120000,
+    })
 
     const categoriespath = ["/earphones", "/headphones", "/speakers"]
 
@@ -22,17 +26,8 @@ const Page = ({ params }: { params: { category: string } }) => {
         notFound()
     }
 
-    const { data: products } = useQuery({
-        queryKey: ['productsByCategory', category],
-        queryFn: () => getProductsByCategory(category),
-        staleTime: 120000
-    })
-
     return (
         <>
-            <Head>
-                <title>Audiophile - {category}</title>
-            </Head>
             <CategoryHeader category={category} />
             <PageContainer>
                 <Products products={products} />
@@ -45,4 +40,5 @@ const Page = ({ params }: { params: { category: string } }) => {
     )
 }
 
-export default Page 
+export default Page
+

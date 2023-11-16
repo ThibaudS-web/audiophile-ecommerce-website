@@ -24,7 +24,6 @@ import { useRouter } from "next/navigation"
 import PageContainer from "@/components/containers/page/PageContainer"
 
 export default function Home() {
-
   const { push } = useRouter()
 
   const goToTheProductPage = (url: string) => {

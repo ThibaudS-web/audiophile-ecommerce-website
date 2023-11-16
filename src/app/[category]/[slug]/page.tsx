@@ -34,16 +34,18 @@ import ButtonOutline from "@/components/button/button-outline/ButtonOutline"
 import { CartContext } from "@/context/cart/CartContext"
 import { Product } from "@/models/product"
 import { ProductCart } from "@/context/cart/ICartContext"
+import { useToast } from "@chakra-ui/react"
 
 const Page = ({ params }: { params: { slug: string } }) => {
     const { slug } = params
     const { back } = useRouter()
     const { getProductBySlug, getAllProducts } = getProducts()
     const { setTotalPrice, itemsList, addItem } = useContext(CartContext)
+    const [itemQuantity, setItemQuantity] = useState(1)
+    const toast = useToast()
     const pathname = usePathname()
     const categoryPath = pathname.split('/')[1]
-    const [itemQuantity, setItemQuantity] = useState(1)
-
+  
     const { data: product, failureCount } = useQuery({
         queryKey: ['productBySlug', slug],
         queryFn: () => getProductBySlug(slug)
@@ -75,14 +77,15 @@ const Page = ({ params }: { params: { slug: string } }) => {
         }
 
         addItem(newItem, quantity)
-    }
 
-    useEffect(() => {
-        setTotalPrice(itemsList.reduce(
-            (accumulator, currentValue) => accumulator + currentValue.productPrice * currentValue.quantity,
-            0,
-        ))
-    }, [itemsList])
+        toast({
+            description: `'${product.name}' Added to the cart! 😀`,
+            status: 'success',
+            duration: 3000,
+            position: 'top-left',
+            isClosable: true,
+        })
+    }
 
     return (
         <>

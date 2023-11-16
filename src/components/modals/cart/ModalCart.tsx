@@ -42,36 +42,35 @@ const ModalCart = () => {
                     <BackgroundOverlay onClick={(e) => handleCloseModal(e)}>
                         <Container>
                             <Modal>
-                                {itemsList.length === 0 ?
-                                    <>
-                                        <CartModalSVG />
-                                        <Empty>
-                                            Your
-                                            <strong>cart</strong>
-                                            is empty 🧐
-                                        </Empty>
-                                    </>
-                                    :
-                                    <>
-                                        <ModalHeader>
-                                            <h6>
-                                                CART({itemsList.length})
-                                            </h6>
-                                            <RemoveButton handleClick={removeCart}>
-                                                Remove all
-                                            </RemoveButton>
-                                        </ModalHeader>
-                                        <ItemsWrapper>
-                                            {itemsList.map((item) => {
-                                                return <ProductInCart key={item.productName} item={item} />
-                                            })}
-                                        </ItemsWrapper>
-                                        <TotalWrapper>
-                                            <TotalLabel>TOTAL</TotalLabel>
-                                            <TotalPrice>{convertNumberToMoney(totalPrice)}</TotalPrice>
-                                        </TotalWrapper>
-                                        <CheckoutButton handleClick={checkout} color='primary'>CHECKOUT</CheckoutButton>
-                                    </>
+                                {
+                                    itemsList.length === 0 ?
+                                        <>
+                                            <CartModalSVG />
+                                            <Empty>
+                                                Your <strong>cart</strong> is empty 🧐
+                                            </Empty>
+                                        </>
+                                        :
+                                        <>
+                                            <ModalHeader>
+                                                <h6>
+                                                    CART({itemsList.length})
+                                                </h6>
+                                                <RemoveButton handleClick={removeCart}>
+                                                    Remove all
+                                                </RemoveButton>
+                                            </ModalHeader>
+                                            <ItemsWrapper>
+                                                {itemsList.map((item) => {
+                                                    return <ProductInCart key={item.productName} item={item} />
+                                                })}
+                                            </ItemsWrapper>
+                                            <TotalWrapper>
+                                                <TotalLabel>TOTAL</TotalLabel>
+                                                <TotalPrice>{convertNumberToMoney(totalPrice)}</TotalPrice>
+                                            </TotalWrapper>
+                                            <CheckoutButton handleClick={checkout} color='primary'>CHECKOUT</CheckoutButton>
+                                        </>
                                 }
                             </Modal>
                         </Container>

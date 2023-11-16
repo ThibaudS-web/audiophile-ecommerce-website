@@ -1,5 +1,4 @@
-"use client"
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
   Container,
   HeaderWrapper,
@@ -26,6 +25,12 @@ const Header = () => {
     console.log('Clicked on Hamburger!')
   }
 
+  const [isNotSSR, setIsNotSSR] = useState(false)
+  
+  useEffect(() => {
+    setIsNotSSR(true)
+  }, [])
+
   return (
     <HeaderWrapper>
       <Container>
@@ -38,7 +43,7 @@ const Header = () => {
         <Navigation type='header' />
         <div onClick={handleModalDisplay} style={{ position: "relative" }}>
           {
-            itemsList.length > 0 ?
+            itemsList.length > 0 && isNotSSR ?
               <TotalItemsInCart>
                 {getTotalProductsNumberInCart()}
               </TotalItemsInCart>
